@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% block title %}Pooja Items – Venkatacharya Samudrala{% endblock %}
+{% block content %}
+
+<!-- Hero header similar style -->
+<div style="position:relative;width:100%;">
+  <div style="background:url('{{ url_for('static',filename='assets/hero-temple.webp') }}') center/cover no-repeat; height:220px;"></div>
+</div>
+
+<div style="max-width:1050px; margin:0 auto; padding:0 15px;">
+  <div style="
+    background:#f1c793;
+    border-radius:22px;
+    width:100%;
+    min-height:220px;
+    box-sizing:border-box;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:-180px;
+    box-shadow:0 12px 28px rgba(235,167,59,0.65);
+    position:relative;
+    overflow:hidden;
+  ">
+    <img src="{{ url_for('static', filename='assets/pooja-items.webp') }}"
+         alt="Priest Services"
+         style="
+            position:absolute;
+            z-index:0;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            object-position: center 40%;
+            opacity:0.22;
+            filter:brightness(0.98);
+            pointer-events:none;
+    ">
+
+    <span style="
+        font-size:2.5rem;
+        font-family:'Merienda';
+        color:#941d1b;
+        font-weight:600;
+        text-align:center;
+        width:100%;
+        position:relative;
+        z-index:1;
+    ">
+        Pooja Items Checklist
+    </span>
+  </div>
+</div>
+
+<div style="max-width:1050px;margin:40px auto 50px;padding:0 15px;">
+  <p style="font-size:1.08rem;color:#4a3423;text-align:center;margin-bottom:26px;">
+    Please use the following lists to prepare the required items for each ritual or ceremony.
+    These checklists are curated based on traditional Vedic practices performed by the priest.
+  </p>
+
+  <style>
+    .pooja-grid {
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      justify-content:center;
+    }
+    .pooja-card {
+      flex:1 1 260px;
+      max-width:320px;
+      background:#fffbe7;
+      border-radius:14px;
+      border:2px solid #f1c27a;
+      box-shadow:0 2px 10px rgba(0,0,0,0.08);
+      padding:16px 18px 14px 18px;
+      box-sizing:border-box;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .pooja-card h3 {
+      font-family:'Merienda';
+      font-size:1.25rem;
+      color:#8b2b18;
+      margin:0 0 8px 0;
+    }
+    .pooja-card p {
+      font-size:0.96rem;
+      color:#5d4630;
+      margin:0 0 12px 0;
+    }
+    .pooja-btn {
+      display:inline-block;
+      background:#ffd566;
+      color:#7a2f04;
+      font-family:'Merienda';
+      font-size:0.98rem;
+      font-weight:600;
+      padding:7px 18px;
+      border-radius:999px;
+      text-decoration:none;
+      box-shadow:0 2px 8px rgba(0,0,0,0.16);
+      transition:background .15s;
+    }
+    .pooja-btn:hover {
+      background:#ffe18e;
+    }
+  </style>
+
+  <div class="pooja-grid">
+
+    <div class="pooja-card">
+      <h3>Aksharabhasyam</h3>
+      <p>Checklist for Aksharabhasyam (Vidyarambham) ceremony guided by the priest.</p>
+      <a class="pooja-btn" href="https://drive.google.com/file/d/1A7GcKfkTI6zhJjgeNACEMXZwBDC8hSZB/view?usp=drive_link" target="_blank">Get List</a>
+    </div>
+
+    <div class="pooja-card">
+      <h3>Annaprasana</h3>
+      <p>Items required for baby’s first feeding ceremony performed by the priest.</p>
+      <a class="pooja-btn" href="https://drive.google.com/file/d/1WQGtrDaX1NR84xQWO-rQbjPsr4H5nQOO/view?usp=drive_link" target="_blank">Get List</a>
+    </div>
+
+    <div class="pooja-card">
+      <h3>Ayusha Homam</h3>
+      <p>Checklist for Ayusha Homam and birthday protection ritual.</p>
+      <a class="pooja-btn" href="https://drive.google.com/file/d/1E0o3z2ztPBhk61CZepZI9flpT4pSwCeF/view?usp=drive_link" target="_blank">Get List</a>
+    </div>
+
+    <div class="pooja-card">
+      <h3>Ganapathi Homam</h3>
+      <p>Items required for Ganapathi Homam performed as per Vedic tradition.</p>
+      <a class="pooja-btn" href="https://drive.google.com/file/d/1FCoR2Iexb1q0h3KfOD0A-Qj1fXcYrmgA/view?usp=drive_link" target="_blank">Get List</a>
+    </div>
+
+    <div class="pooja-card">
+      <h3>Gruhapravesham</h3>
+      <p>Puja items for housewarming ceremony conducted by the priest.</p>
+      <a class="pooja-btn" href="https://drive.google.com/file/d/1XwrFf0VEXHO9jRqvqV1tyh0UoiheR2y_/view?usp=drive_link" target="_blank">Get List</a>
+    </div>
+
+    <div class="pooja-card">
+      <h3>Hiranyam</h3>
+      <p>Checklist for Hiranyam ritual performed with Vedic guidance.</p>
+      <a class="pooja-btn" href="https://drive.google.com/file/d/1_W4Wr60y9qighFUE2oqUigRNcuTmzmEH/view?usp=drive_link" target="_blank">Get List</a>
+    </div>
+
+    <div class="pooja-card">
+      <h3>Keshakandam</h3>
+      <p>Items required for hair offering ceremony (Keshakandam).</p>
+      <a class="pooja-btn" href="https://drive.google.com/file/d/1nAuV8N_uclWaj-q366Cj0hzrm9j4Wc5h/view?usp=drive_link" target="_blank">Get List</a>
+    </div>
+
+    <div class="pooja-card">
+      <h3>Namakaranam</h3>
+      <p>Checklist for naming ceremony performed by the priest.</p>
+      <a class="pooja-btn" href="https://drive.google.com/file/d/1-CkeXbBQXpOL8KGNuyhn4gEMWV2g0w5-/view?usp=drive_link" target="_blank">Get List</a>
+    </div>
+
+    <div class="pooja-card">
+      <h3>Punyavachanam</h3>
+      <p>Items required for purification ritual (Punyavachanam).</p>
+      <a class="pooja-btn" href="https://drive.google.com/file/d/1I_cKqk8EZFsNPDYkH-N1bbaYczj1mCrf/view?usp=drive_link" target="_blank">Get List</a>
+    </div>
+
+    <div class="pooja-card">
+      <h3>Seemantham</h3>
+      <p>Checklist for baby shower ceremony performed by the priest.</p>
+      <a class="pooja-btn" href="https://drive.google.com/file/d/1WkO_qXuotqyzgIfMGY2-NCx8mMTwf84f/view?usp=drive_link" target="_blank">Get List</a>
+    </div>
+
+    <div class="pooja-card">
+      <h3>Sudarshana Homam</h3>
+      <p>Checklist for Sudarshana Homam performed for protection and blessings.</p>
+      <a class="pooja-btn" href="https://drive.google.com/file/d/1rw2E9rpmEiFP4TaSV7RjfqxACpn6PLpG/view?usp=drive_link" target="_blank">Get List</a>
+    </div>
+
+    <div class="pooja-card">
+      <h3>Wedding</h3>
+      <p>Complete Vedic wedding item checklist guided by the priest.</p>
+      <a class="pooja-btn" href="https://drive.google.com/file/d/1noqpNfHbmd3PBPOjwDdsRh9LIRnahEBD/view?usp=drive_link" target="_blank">Get List</a>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

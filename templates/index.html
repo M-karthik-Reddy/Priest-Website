@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block title %}About Priest | Venkatacharya Samudrala{% endblock %}
+{% block content %}
+
+<!-- ================= HERO SECTION ================= -->
+<div class="container my-5">
+  <div class="rounded-4 shadow-lg position-relative overflow-hidden text-center"
+       style="min-height:520px; display:flex; align-items:center; justify-content:center;
+       background: linear-gradient(135deg,#fff1d6,#ffe2b5);">
+
+    <!-- Background Image -->
+    <img src="{{ url_for('static', filename='assets/hero-temple.webp') }}"
+         style="position:absolute; inset:0; width:100%; height:100%;
+         object-fit:cover; opacity:0.18; filter:brightness(1.1);">
+
+    <div style="position:relative; z-index:2; padding:40px;">
+      <h5 style="font-family:'Merienda'; color:#a05a2c;">
+        Experienced Vedic Priest
+      </h5>
+
+      <h1 style="font-family:'Merienda'; font-size:3rem; font-weight:700; color:#7b150f;">
+        Sri Venkatacharya Samudrala
+      </h1>
+
+      <p style="max-width:750px; margin:auto; font-size:1.2rem; color:#5a3a1f;">
+        23+ years of experience in performing authentic Vedic rituals, homams, weddings,
+        and spiritual ceremonies across USA with devotion and precision.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================= IMAGE + ABOUT (NEW SPLIT LAYOUT) ================= -->
+<div class="container my-5">
+  <div class="row align-items-stretch g-4">
+
+    <!-- LEFT: SINGLE IMAGE -->
+    <div class="col-lg-5">
+      <div class="rounded-4 shadow overflow-hidden h-100">
+        <img src="{{ url_for('static', filename='assets/priest4.jpeg') }}"
+             style="width:100%; height:100%; object-fit:cover; min-height:450px;">
+      </div>
+    </div>
+
+    <!-- RIGHT: ABOUT BOX -->
+    <div class="col-lg-7">
+      <div class="p-4 p-md-5 rounded-4 shadow h-100"
+           style="background:#fffaf0; border:2px solid #f0d29b;">
+
+        <h2 class="text-center mb-4" style="font-family:'Merienda'; color:#7b150f;">
+          About the Priest
+        </h2>
+
+        <p style="font-size:1.05rem; line-height:1.9; color:#4c3026;">
+          Sriman Samudrala Venkatacharya Swamy is a highly respected Hindu Religious Priest
+          with over 23 years of dedicated service to the Hindu community across Virginia,
+          Maryland, and the Washington, D.C. metropolitan area. Deeply rooted in the Vedic
+          tradition, he has devoted his life to preserving and promoting the spiritual,
+          cultural, and religious values of Sanatana Dharma.
+        </p>
+
+        <p style="font-size:1.05rem; line-height:1.9; color:#4c3026;">
+          Throughout his years of service, he has conducted a wide range of Vedic rituals
+          including Vivaha (weddings), Gruhapravesam, Satyanarayana Vratham, Seemantham,
+          Namakaranam, Upanayanam, Annaprasana, Rudrabhishekam, Lakshmi Puja, Ganapathi Homam,
+          Navagraha Homam, Sudarshana Homam, Ayush Homam, and many other sacred ceremonies.
+        </p>
+
+        <p style="font-size:1.05rem; line-height:1.9; color:#4c3026;">
+          He is fluent in English, Kannada, Sanskrit, Hindi, Telugu, and Tamil, allowing him
+          to serve a diverse community. He is known for clearly explaining the spiritual meaning
+          and purpose of rituals, making them accessible to all devotees regardless of background.
+        </p>
+
+        <p style="font-size:1.05rem; line-height:1.9; color:#4c3026;">
+          His compassionate nature and dedication to service ensure every ceremony becomes
+          a spiritually uplifting and meaningful experience. He welcomes everyone seeking
+          spiritual guidance and blessings.
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ================= TIMINGS ================= -->
+<div class="container my-5 text-center">
+  <h3 style="font-family:'Merienda'; color:#7b150f;">Availability</h3>
+
+  <ul style="list-style:none; padding:0; font-size:1.1rem; color:#4c3026;">
+    <li>Mon – Fri: 8:00 AM – 8:00 PM</li>
+    <li>Weekends: Flexible based on booking</li>
+  </ul>
+</div>
+
+
+<!-- ================= CALENDAR ================= -->
+<div class="container text-center my-4">
+  <a href="https://drive.google.com/file/d/1M04cW1a5S0eBBJkj7JlujUNBWGzJ7Msh/view?usp=drive_link"
+     class="btn btn-warning rounded-pill px-4 py-2 fw-bold"
+     style="font-family:'Merienda';"
+     target="_blank">
+    📅 View Availability Calendar
+  </a>
+</div>
+
+
+<!-- ================= CONTACT ================= -->
+<div class="container my-5">
+  <div class="text-center p-5 rounded-4 shadow"
+       style="background:linear-gradient(135deg,#7b150f,#a84a2c); color:white;">
+
+    <h3 style="font-family:'Merienda';">Contact the Priest</h3>
+
+    <p style="margin:0; font-size:1.1rem;">
+      Venkatacharya Samudrala
+    </p>
+
+    <p style="margin:5px 0;">
+      📞 301-523-1926
+    </p>
+
+    <p>
+      ✉️ <a href="mailto:acharya88@gmail.com" style="color:#ffd27d;">
+        acharya88@gmail.com
+      </a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

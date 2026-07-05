@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block title %}Home | Priest Services{% endblock %}
+
+{% block content %}
+
+<!-- ================= HERO SECTION ================= -->
+<div class="container my-5">
+  <div class="rounded-4 shadow-lg p-5 text-center position-relative overflow-hidden"
+       style="background: linear-gradient(135deg, #fff3d6, #ffe0b2); min-height: 520px;">
+
+    <!-- Background -->
+    <div style="
+      position:absolute;
+      inset:0;
+      background:url('{{ url_for('static', filename='assets/priest-services.webp') }}') center/cover;
+      opacity:0.85;
+    "></div>
+
+    <div style="position:relative; z-index:2;">
+
+      <h5 style="
+          font-family:'Merienda';
+          color:#ffffff;
+          text-shadow:2px 2px 8px rgba(0,0,0,.7);">
+        Authentic Vedic Ritual Services
+      </h5>
+
+      <h1 style="
+          font-family:'Merienda';
+          font-size:3rem;
+          font-weight:700;
+          color:#ffffff;
+          text-shadow:3px 3px 10px rgba(0,0,0,.75);">
+        Sri Venkatacharya Samudrala
+      </h1>
+
+      <p style="
+          font-size:1.2rem;
+          color:#ffffff;
+          max-width:750px;
+          margin:15px auto;
+          text-shadow:2px 2px 8px rgba(0,0,0,.7);">
+        A highly experienced Hindu priest with 23+ years of service across USA,
+        performing authentic Vedic rituals, homams, weddings, and spiritual ceremonies
+        with devotion and precision.
+      </p>
+
+      <div class="mt-4">
+        <a href="/index"
+           class="btn btn-warning rounded-pill px-4 py-2 fw-bold"
+           style="font-family:'Merienda';">
+          📖 View Full Biography
+        </a>
+
+        <a href="/priest-services"
+           class="btn btn-outline-light rounded-pill px-4 py-2 fw-bold ms-2"
+           style="font-family:'Merienda';">
+          🛕 Explore Services
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ================= ABOUT SHORT SECTION ================= -->
+<div class="container my-5 text-center">
+
+  <h2 style="font-family:'Merienda'; color:#7b150f;">
+    About the Priest
+  </h2>
+
+  <p style="max-width:850px; margin:auto; color:#5a3a1f; font-size:1.1rem; line-height:1.8;">
+    Sriman Venkatacharya Swamy is a respected Vedic priest dedicated to preserving
+    Sanatana Dharma through authentic rituals, spiritual guidance, and educational
+    explanations of Hindu traditions. He serves devotees across languages including
+    English, Hindi, Telugu, Kannada, Sanskrit, and Tamil.
+  </p>
+</div>
+
+
+<!-- ================= SERVICES PREVIEW ================= -->
+<div class="container my-5">
+
+  <h3 class="text-center mb-4" style="font-family:'Merienda'; color:#7b150f;">
+    Spiritual Services
+  </h3>
+
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="p-4 rounded-4 shadow text-center" style="background:#fff7e6;">
+        <h5>Vedic Homams</h5>
+        <p>Ganapathi, Navagraha, Sudarshana & more rituals performed authentically.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="p-4 rounded-4 shadow text-center" style="background:#fff7e6;">
+        <h5>Life Ceremonies</h5>
+        <p>Weddings, Gruhapravesam, Namakaranam, Seemantham and more.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="p-4 rounded-4 shadow text-center" style="background:#fff7e6;">
+        <h5>Spiritual Guidance</h5>
+        <p>Clear explanation of rituals in multiple languages for all devotees.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ================= FINAL CALL TO ACTION ================= -->
+<div class="container my-5">
+  <div class="text-center p-5 rounded-4 shadow"
+       style="background:linear-gradient(135deg,#7b150f,#a84a2c); color:white;">
+
+    <h2 style="font-family:'Merienda';">
+      Invite the Priest for Your Sacred Ceremony
+    </h2>
+
+    <p style="max-width:700px; margin:auto;">
+      Book Vedic rituals at your home or venue with complete authenticity and devotion.
+    </p>
+
+    <a href="/contact" class="btn btn-light mt-3 px-4 py-2 rounded-pill fw-bold">
+      📞 Contact Now
+    </a>
+
+  </div>
+</div>
+
+{% endblock %}

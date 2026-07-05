@@ -1,0 +1,7 @@
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+header, footer { background: #efe4d6; padding: 1em; text-align: center; }
+nav a { margin: 0 10px; color: #a0522d; text-decoration: none; }
+main { max-width: 900px; margin: 20px auto; padding: 1em;}
+.flashes { list-style: none; padding: 0;}
+.flashes li.success { color: green;}
+@media (max-width: 600px) { nav {display: block;} }

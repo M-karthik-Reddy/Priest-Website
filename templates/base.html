@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Priest Services{% endblock %}</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='assets/favicon (3).png') }}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+
+        body{
+            margin:0;
+            font-family:'Merienda',cursive;
+            background:#fff8ef;
+        }
+
+        /* ================= HEADER ================= */
+
+        .top-header{
+            background:#fdebb6;
+            min-height:120px;
+            padding:18px 20px 16px;
+            position:relative;
+            text-align:center;
+        }
+
+        /* ================= LEFT LOGO ================= */
+
+        .icon-row{
+            position:absolute;
+            left:8%;
+            top:50%;
+            transform:translateY(-50%);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        .icon-row img{
+            width:72px;
+            height:72px;
+            object-fit:contain;
+            display:block;
+        }
+
+        /* ================= BRAND ================= */
+
+        .brand-title{
+            font-size:2.3rem;
+            font-weight:700;
+            color:#c1272d;
+            margin-bottom:14px;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .nav-pill-wrapper{
+            display:flex;
+            justify-content:center;
+        }
+
+        .nav-pill{
+            background:white;
+            border-radius:999px;
+            padding:8px 12px;
+            display:flex;
+            align-items:center;
+            gap:6px;
+            box-shadow:0 8px 20px rgba(0,0,0,.12);
+            flex-wrap:wrap;
+        }
+
+        .nav-pill a{
+            text-decoration:none;
+            color:#333;
+            padding:10px 20px;
+            border-radius:999px;
+            font-size:1.05rem;
+            font-weight:500;
+            transition:.25s;
+        }
+
+        .nav-pill a:hover{
+            background:#ffe5a7;
+            color:#7b150f;
+        }
+
+        .nav-pill a.active{
+            background:#c1272d;
+            color:white;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer{
+            background:#7b150f;
+            color:white;
+            padding:40px 20px;
+            margin-top:40px;
+        }
+
+        .footer-container{
+            max-width:1100px;
+            margin:auto;
+            display:flex;
+            justify-content:space-between;
+            flex-wrap:wrap;
+        }
+
+        .footer-box{
+            flex:1;
+            min-width:250px;
+            margin:10px;
+        }
+
+        .footer-box h4{
+            color:#ffd27d;
+            margin-bottom:10px;
+        }
+
+        .calendar-btn{
+            display:inline-block;
+            margin-top:10px;
+            padding:8px 14px;
+            background:#ffd27d;
+            color:#7b150f;
+            border-radius:8px;
+            text-decoration:none;
+            font-weight:bold;
+        }
+
+        .calendar-btn:hover{
+            background:white;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width:768px){
+
+            .top-header{
+                padding-top:20px;
+                padding-bottom:16px;
+                min-height:auto;
+            }
+
+            .icon-row{
+                position:relative;
+                left:auto;
+                top:auto;
+                transform:none;
+                justify-content:center;
+                margin-bottom:10px;
+            }
+
+            .icon-row img{
+                width:58px;
+                height:58px;
+            }
+
+            .brand-title{
+                font-size:1.8rem;
+                margin-bottom:12px;
+            }
+
+            .nav-pill{
+                width:95%;
+                justify-content:center;
+            }
+
+            .nav-pill a{
+                font-size:.9rem;
+                padding:8px 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<div class="top-header">
+
+  
+
+    <!-- Title -->
+    <div class="brand-title">
+        Hindu Poojas
+    </div>
+
+    <!-- Navbar -->
+    <div class="nav-pill-wrapper">
+
+        <div class="nav-pill">
+
+            <a href="/" class="{% if request.path == '/' %}active{% endif %}">
+                Home
+            </a>
+
+            <a href="/index" class="{% if request.path == '/index' %}active{% endif %}">
+                About Us
+            </a>
+
+            <a href="/priest-services" class="{% if request.path == '/priest-services' %}active{% endif %}">
+                Priest Services
+            </a>
+
+            <a href="/pooja-items" class="{% if request.path == '/pooja-items' %}active{% endif %}">
+                Pooja Items
+            </a>
+
+            <a href="/gallery" class="{% if request.path == '/gallery' %}active{% endif %}">
+                Gallery
+            </a>
+
+            <a href="/contact" class="{% if request.path == '/contact' %}active{% endif %}">
+                Contact
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= PAGE CONTENT ================= -->
+
+<div>
+    {% block content %}{% endblock %}
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-container">
+
+        <div class="footer-box">
+
+            <h4>Contact Information</h4>
+
+            <p><b>Venkatacharya Samudrala</b></p>
+
+            <p>Phone: 301-523-1926</p>
+
+            <p>
+                Email:
+                <a href="mailto:acharya88@gmail.com" style="color:#ffd27d;">
+                    acharya88@gmail.com
+                </a>
+            </p>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h4>Quick Links</h4>
+
+            <p><a href="/" style="color:white;">Home</a></p>
+
+            <p><a href="/index" style="color:white;">About Us</a></p>
+
+            <p><a href="/priest-services" style="color:white;">Priest Services</a></p>
+
+            <p><a href="/pooja-items" style="color:white;">Pooja Items</a></p>
+
+            <p><a href="/gallery" style="color:white;">Gallery</a></p>
+
+            <p><a href="/contact" style="color:white;">Contact</a></p>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h4>Events Calendar</h4>
+
+            <a class="calendar-btn"
+               href="https://drive.google.com/file/d/1M04cW1a5S0eBBJkj7JlujUNBWGzJ7Msh/view?usp=drive_link"
+               target="_blank">
+
+                📅 View Calendar
+
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
