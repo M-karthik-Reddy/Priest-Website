@@ -6,10 +6,10 @@
 <style>
 .gallery-card{
     background: linear-gradient(135deg,#fffdf8,#fff4d8);
-    border: 2px solid #f2d28b;
-    border-radius: 24px;
-    padding: 18px;
-    min-height: 420px;
+    border:2px solid #f2d28b;
+    border-radius:24px;
+    padding:18px;
+    min-height:420px;
 
     display:flex;
     align-items:center;
@@ -19,11 +19,11 @@
         0 8px 24px rgba(0,0,0,0.08),
         inset 0 0 20px rgba(255,215,120,0.15);
 
-    transition: all 0.3s ease;
+    transition:all .3s ease;
 }
 
 .gallery-card:hover{
-    transform: translateY(-4px);
+    transform:translateY(-4px);
     box-shadow:
         0 12px 28px rgba(0,0,0,0.12),
         0 0 20px rgba(242,210,139,0.35);
@@ -38,10 +38,34 @@
 }
 
 .gallery-heading{
-    font-family:'Merienda';
+    font-family:'Segoe UI', Arial, sans-serif;
     color:#7b150f;
     font-size:2.3rem;
     font-weight:700;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+    body{
+        font-family:'Segoe UI', Arial, sans-serif !important;
+    }
+
+    .gallery-heading{
+        font-family:'Segoe UI', Arial, sans-serif;
+        font-size:1.7rem;
+    }
+
+    .gallery-card{
+        min-height:auto;
+        padding:12px;
+    }
+
+    .gallery-card img{
+        height:220px;
+        object-fit:cover;
+    }
 }
 </style>
 
@@ -58,7 +82,7 @@
         <div class="row g-4 mt-2">
 
             {% for i in range(1,7) %}
-            <div class="col-md-6">
+            <div class="col-md-6 col-12">
 
                 <div class="gallery-card">
 

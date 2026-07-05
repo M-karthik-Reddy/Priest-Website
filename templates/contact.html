@@ -3,21 +3,100 @@
 
 {% block content %}
 
+<style>
+
+/* ================= PAGE FONT ================= */
+
+.contact-card,
+.contact-card *{
+    font-family:'Segoe UI', Arial, Helvetica, sans-serif;
+}
+
+/* ================= CONTACT CARD ================= */
+
+.contact-card{
+    background:linear-gradient(135deg,#7b150f,#a84a2c);
+    color:white;
+    padding:50px 20px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* ================= TEXT ================= */
+
+.contact-card h2{
+    font-size:2rem;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.contact-card p{
+    font-size:1.1rem;
+    margin:12px 0;
+    line-height:1.6;
+}
+
+/* ================= EMAIL ================= */
+
+.contact-card a{
+    color:#ffd27d;
+    text-decoration:none;
+    word-break:break-word;
+    transition:0.2s ease;
+}
+
+.contact-card a:hover{
+    color:#ffffff;
+    text-decoration:underline;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+    body,
+    h1,h2,h3,h4,h5,h6,
+    p,a,span,li,button{
+        font-family:'Segoe UI', Arial, Helvetica, sans-serif !important;
+    }
+
+    .contact-card{
+        padding:30px 15px;
+        border-radius:14px;
+    }
+
+    .contact-card h2{
+        font-size:1.6rem;
+    }
+
+    .contact-card p{
+        font-size:1rem;
+    }
+
+}
+
+</style>
+
 <div class="container my-5">
-    <div class="text-center p-5 rounded-4 shadow"
-         style="background:linear-gradient(135deg,#7b150f,#a84a2c); color:white;">
 
-        <h2 style="font-family:'Merienda';">Contact the Priest</h2>
+    <div class="contact-card">
 
-        <p style="margin-top:15px;">Venkatacharya Samudrala</p>
+        <h2>Contact the Priest</h2>
+
+        <p><strong>Venkatacharya Samudrala</strong></p>
+
         <p>📞 301-523-1926</p>
+
         <p>
-            ✉️ <a href="mailto:acharya88@gmail.com" style="color:#ffd27d;">
+            ✉️
+            <a href="mailto:acharya88@gmail.com">
                 acharya88@gmail.com
             </a>
         </p>
 
     </div>
+
 </div>
 
 {% endblock %}

@@ -3,43 +3,126 @@
 
 {% block content %}
 
-<!-- ================= HERO SECTION ================= -->
+<style>
+
+/* ================= GLOBAL TEXT FIX ================= */
+
+body{
+    font-family:'Segoe UI', Roboto, Arial, sans-serif;
+    color:#222;
+}
+
+/* Only headings use decorative font */
+h1, h2, h3, h4, h5, .hero-title, .hero-subtitle{
+    font-family:'Merienda', cursive;
+}
+
+/* ================= HERO ================= */
+
+.hero-box{
+    background: linear-gradient(135deg, #fff3d6, #ffe0b2);
+    min-height: 520px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg{
+    position:absolute;
+    inset:0;
+    background:url('{{ url_for('static', filename='assets/priest-services.webp') }}') center/cover;
+    opacity:0.85;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero-title{
+    font-size:3rem;
+    font-weight:700;
+    color:#fff;
+    text-shadow:3px 3px 10px rgba(0,0,0,.75);
+}
+
+.hero-subtitle{
+    color:#fff;
+    text-shadow:2px 2px 8px rgba(0,0,0,.7);
+}
+
+.hero-text{
+    font-size:1.2rem;
+    color:#fff;
+    max-width:750px;
+    margin:15px auto;
+    text-shadow:2px 2px 8px rgba(0,0,0,.7);
+}
+
+/* ================= CARDS ================= */
+
+.service-card{
+    background:#fff7e6;
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    height:100%;
+    font-family:'Segoe UI', Arial, sans-serif;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px){
+
+    body{
+        font-family:'Segoe UI', Arial, sans-serif !important;
+    }
+
+    .hero-title{
+        font-size:1.8rem;
+        text-align:center;
+    }
+
+    .hero-text{
+        font-size:1rem;
+        padding:0 10px;
+    }
+
+    .hero-box{
+        min-height:420px;
+        padding:20px;
+    }
+
+    .btn{
+        width:100%;
+        margin-bottom:10px;
+    }
+
+    .service-card{
+        text-align:center;
+    }
+}
+
+</style>
+
+<!-- ================= HERO ================= -->
+
 <div class="container my-5">
-  <div class="rounded-4 shadow-lg p-5 text-center position-relative overflow-hidden"
-       style="background: linear-gradient(135deg, #fff3d6, #ffe0b2); min-height: 520px;">
 
-    <!-- Background -->
-    <div style="
-      position:absolute;
-      inset:0;
-      background:url('{{ url_for('static', filename='assets/priest-services.webp') }}') center/cover;
-      opacity:0.85;
-    "></div>
+  <div class="rounded-4 shadow-lg p-5 text-center hero-box">
 
-    <div style="position:relative; z-index:2;">
+    <div class="hero-bg"></div>
 
-      <h5 style="
-          font-family:'Merienda';
-          color:#ffffff;
-          text-shadow:2px 2px 8px rgba(0,0,0,.7);">
+    <div class="hero-content">
+
+      <h5 class="hero-subtitle">
         Authentic Vedic Ritual Services
       </h5>
 
-      <h1 style="
-          font-family:'Merienda';
-          font-size:3rem;
-          font-weight:700;
-          color:#ffffff;
-          text-shadow:3px 3px 10px rgba(0,0,0,.75);">
+      <h1 class="hero-title">
         Sri Venkatacharya Samudrala
       </h1>
 
-      <p style="
-          font-size:1.2rem;
-          color:#ffffff;
-          max-width:750px;
-          margin:15px auto;
-          text-shadow:2px 2px 8px rgba(0,0,0,.7);">
+      <p class="hero-text">
         A highly experienced Hindu priest with 23+ years of service across USA,
         performing authentic Vedic rituals, homams, weddings, and spiritual ceremonies
         with devotion and precision.
@@ -47,14 +130,12 @@
 
       <div class="mt-4">
         <a href="/index"
-           class="btn btn-warning rounded-pill px-4 py-2 fw-bold"
-           style="font-family:'Merienda';">
+           class="btn btn-warning rounded-pill px-4 py-2 fw-bold">
           📖 View Full Biography
         </a>
 
         <a href="/priest-services"
-           class="btn btn-outline-light rounded-pill px-4 py-2 fw-bold ms-2"
-           style="font-family:'Merienda';">
+           class="btn btn-outline-light rounded-pill px-4 py-2 fw-bold ms-2">
           🛕 Explore Services
         </a>
       </div>
@@ -63,11 +144,11 @@
   </div>
 </div>
 
+<!-- ================= ABOUT ================= -->
 
-<!-- ================= ABOUT SHORT SECTION ================= -->
 <div class="container my-5 text-center">
 
-  <h2 style="font-family:'Merienda'; color:#7b150f;">
+  <h2 style="color:#7b150f; font-family:'Merienda', cursive;">
     About the Priest
   </h2>
 
@@ -77,34 +158,35 @@
     explanations of Hindu traditions. He serves devotees across languages including
     English, Hindi, Telugu, Kannada, Sanskrit, and Tamil.
   </p>
+
 </div>
 
+<!-- ================= SERVICES ================= -->
 
-<!-- ================= SERVICES PREVIEW ================= -->
 <div class="container my-5">
 
-  <h3 class="text-center mb-4" style="font-family:'Merienda'; color:#7b150f;">
+  <h3 class="text-center mb-4" style="color:#7b150f; font-family:'Merienda', cursive;">
     Spiritual Services
   </h3>
 
   <div class="row g-4">
 
-    <div class="col-md-4">
-      <div class="p-4 rounded-4 shadow text-center" style="background:#fff7e6;">
+    <div class="col-md-4 col-12">
+      <div class="service-card">
         <h5>Vedic Homams</h5>
         <p>Ganapathi, Navagraha, Sudarshana & more rituals performed authentically.</p>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="p-4 rounded-4 shadow text-center" style="background:#fff7e6;">
+    <div class="col-md-4 col-12">
+      <div class="service-card">
         <h5>Life Ceremonies</h5>
         <p>Weddings, Gruhapravesam, Namakaranam, Seemantham and more.</p>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="p-4 rounded-4 shadow text-center" style="background:#fff7e6;">
+    <div class="col-md-4 col-12">
+      <div class="service-card">
         <h5>Spiritual Guidance</h5>
         <p>Clear explanation of rituals in multiple languages for all devotees.</p>
       </div>
@@ -113,13 +195,14 @@
   </div>
 </div>
 
+<!-- ================= CTA ================= -->
 
-<!-- ================= FINAL CALL TO ACTION ================= -->
 <div class="container my-5">
+
   <div class="text-center p-5 rounded-4 shadow"
        style="background:linear-gradient(135deg,#7b150f,#a84a2c); color:white;">
 
-    <h2 style="font-family:'Merienda';">
+    <h2 style="font-family:'Merienda', cursive;">
       Invite the Priest for Your Sacred Ceremony
     </h2>
 
@@ -132,6 +215,7 @@
     </a>
 
   </div>
+
 </div>
 
 {% endblock %}

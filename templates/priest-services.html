@@ -1,157 +1,212 @@
 {% extends "base.html" %}
 {% block title %}Priest Services – Venkatacharya Samudrala{% endblock %}
+
 {% block content %}
 
-
-<!-- HERO background section (unchanged layout, priest branding only) -->
-<div style="position:relative;width:100%;">
-  <div style="background:url('{{ url_for('static',filename='assets/hero-temple.webp') }}') center/cover no-repeat; height:220px;"></div>
-</div>
-
-
-<!-- SERVICES HEADER BOX -->
-<div style="max-width:1050px; margin:0 auto; padding:0 15px;">
-  <div style="
-    background:#f1c793;
-    border-radius:22px;
-    width:100%;
-    min-height:280px;
-    box-sizing:border-box;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-top:-180px;
-    box-shadow:0 12px 28px rgba(235,167,59,0.65);
-    position:relative;
-    overflow:hidden;
-">
-
-    <img src="{{ url_for('static', filename='assets/priest-services.webp') }}"
-         alt="Priest Services Background"
-         style="
-            position:absolute;
-            z-index:0;     
-            left:0;
-            top:0;
-            width:100%;
-            height:100%;
-            object-fit:cover;
-            object-position: center 40%;
-            opacity:0.22;
-            filter:brightness(0.98);
-            pointer-events:none;
-    ">
-
-    <span style="
-        font-size:2.9rem;
-        font-family:'Merienda';
-        color:#941d1b;
-        font-weight:600;
-        text-align:center;
-        width:100%;
-        position:relative;
-        z-index:1;
-    ">
-        Priest Services
-    </span>
-
-  </div>
-</div>
-
-
-<!-- CEREMONIES GRID -->
-<div style="max-width:1100px; margin:42px auto 0 auto; padding:0 15px 100px 15px;">
-
-    <!-- Sanskara Ceremonies -->
-    <div style="margin-bottom:40px;">
-      <h3 style="font-size:1.55rem;color:#7b150f;margin:30px 0 18px 0;text-align:center;">
-        <span style="font-size:1.2em;">👶</span> Sanskara Ceremonies
-      </h3>
-
-      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px 38px;">
-        <div class="service-pill">Namakaranam</div>
-        <div class="service-pill">Annaprashanam</div>
-        <div class="service-pill">Aksharabhyasam</div>
-        <div class="service-pill">Chowlam / Hair Offering</div>
-        <div class="service-pill">Upanayanam</div>
-        <div class="service-pill">Seemantham</div>
-      </div>
-    </div>
-
-    <!-- Life Events -->
-    <div style="margin-bottom:36px;">
-      <h3 style="font-size:1.55rem;color:#7b150f;margin:30px 0 18px 0;text-align:center;">
-        <span style="font-size:1.2em;">🪔</span> Life Events & Milestones
-      </h3>
-
-      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px 38px;">
-        <div class="service-pill">Griha Pravesham</div>
-        <div class="service-pill">60th, 70th, 80th Birthdays</div>
-        <div class="service-pill">Sathabhishekam</div>
-        <div class="service-pill">Wedding Ceremonies</div>
-        <div class="service-pill">Ayushya Homam / Birthday Poojas</div>
-      </div>
-    </div>
-
-    <!-- Homas & Poojas -->
-    <div style="margin-bottom:36px;">
-      <h3 style="font-size:1.55rem;color:#7b150f;margin:30px 0 18px 0;text-align:center;">
-        <span style="font-size:1.2em;">🕉️</span> Homas, Vrathams & Poojas
-      </h3>
-
-      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px 38px;">
-        <div class="service-pill">Ganapathi Homam</div>
-        <div class="service-pill">Chandi Homam</div>
-        <div class="service-pill">Sudarshana Homam</div>
-        <div class="service-pill">Satya Narayana Vratham</div>
-        <div class="service-pill">Varalakshmi Vratham</div>
-        <div class="service-pill">Kedareshwara Vratham</div>
-        <div class="service-pill">NavaGraha / Nakshatra Shanti</div>
-        <div class="service-pill">Hiranya Shraddham / Parvana Shraddham</div>
-        <div class="service-pill">Kalyanotsavam</div>
-        <div class="service-pill">Vara Siddhi Vinayaka Vratham</div>
-      </div>
-    </div>
-</div>
-
-
-<!-- SERVICE INFO -->
-<div style="max-width:900px;margin:32px auto;padding:0 15px 50px;">
-  <h4 style="font-size:1.2rem;color:#7b150f;font-weight:700;margin-bottom:.5em;">
-    At Your Home or Preferred Venue
-  </h4>
-
-  <p style="font-size:1.08rem;color:#444;">
-    The priest is available to travel to devotee homes, event halls, or designated spiritual venues.
-    You may also choose to conduct ceremonies at your convenience location.
-    All rituals are performed authentically following Vedic traditions with proper guidance and devotion.
-  </p>
-</div>
-
-
-<!-- STYLES (UNCHANGED DESIGN) -->
 <style>
+
+/* ================= GLOBAL FONT FIX ================= */
+body,
+h1, h2, h3, h4, h5, p, span, div {
+  font-family: Arial, Helvetica, sans-serif !important;
+  color:#333;
+}
+
+/* ================= HERO ================= */
+.services-hero {
+  position: relative;
+  width: 100%;
+}
+
+.services-hero-bg {
+  background: url('{{ url_for('static',filename='assets/hero-temple.webp') }}') center/cover no-repeat;
+  height: 220px;
+}
+
+.services-box-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.services-box {
+  background: #f1c793;
+  border-radius: 22px;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -170px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(235,167,59,0.55);
+}
+
+.services-box img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.22;
+}
+
+.services-title {
+  font-size: 2.8rem;
+  color: #941d1b;
+  font-weight: 600;
+  z-index: 2;
+  text-align: center;
+}
+
+/* ================= SECTION TITLE ================= */
+.section-title {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #7b150f;
+  margin: 35px 0 18px;
+  font-weight: 700;
+}
+
+/* ================= GRID ================= */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  justify-items: center;
+}
+
+/* ================= PILLS ================= */
 .service-pill {
   background: #fff7ea;
   border: 2px solid #f4cd7f;
   border-radius: 14px;
-  padding: 18px 34px;
-  font-size: 1.18rem;
+  padding: 16px 20px;
+  font-size: 1.05rem;
   color: #441b0a;
   font-weight: 600;
-  margin-bottom: 12px;
-  text-align:center;
-  box-shadow:0 2px 10px 0 #f3e0bc3a;
-  min-width:210px;
-  max-width:320px;
-  flex: 1 1 250px;
-  transition: box-shadow .26s,border .22s;
+  text-align: center;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  transition: 0.25s ease;
 }
+
 .service-pill:hover {
-  border:2px solid #b75528;
-  box-shadow:0 6px 18px 0 #edc04c77;
-  color:#9a2c07;
+  border-color: #b75528;
+  transform: translateY(-3px);
+  color: #9a2c07;
 }
+
+/* ================= INFO ================= */
+.info-box {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 15px;
+}
+
+.info-box h4 {
+  color: #7b150f;
+  font-weight: 700;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .services-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+
+  /* FIX CURSIVE COMPLETELY */
+  body,
+  h1, h2, h3, h4, h5, p, span, div {
+    font-family: Arial, Helvetica, sans-serif !important;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-title {
+    font-size: 1.6rem;
+  }
+
+  .service-pill {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+}
+
 </style>
+
+<!-- ================= HERO ================= -->
+<div class="services-hero">
+  <div class="services-hero-bg"></div>
+
+  <div class="services-box-wrapper">
+    <div class="services-box">
+      <img src="{{ url_for('static', filename='assets/priest-services.webp') }}">
+      <div class="services-title">Priest Services</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SANSKARA ================= -->
+<h3 class="section-title">👶 Sanskara Ceremonies</h3>
+
+<div class="services-box-wrapper">
+  <div class="service-grid">
+    <div class="service-pill">Namakaranam</div>
+    <div class="service-pill">Annaprashanam</div>
+    <div class="service-pill">Aksharabhyasam</div>
+    <div class="service-pill">Chowlam / Hair Offering</div>
+    <div class="service-pill">Upanayanam</div>
+    <div class="service-pill">Seemantham</div>
+  </div>
+</div>
+
+<!-- ================= LIFE EVENTS ================= -->
+<h3 class="section-title">🪔 Life Events & Milestones</h3>
+
+<div class="services-box-wrapper">
+  <div class="service-grid">
+    <div class="service-pill">Griha Pravesham</div>
+    <div class="service-pill">60th, 70th, 80th Birthdays</div>
+    <div class="service-pill">Sathabhishekam</div>
+    <div class="service-pill">Wedding Ceremonies</div>
+    <div class="service-pill">Ayushya Homam</div>
+  </div>
+</div>
+
+<!-- ================= HOMAS ================= -->
+<h3 class="section-title">🕉️ Homas & Vrathams</h3>
+
+<div class="services-box-wrapper">
+  <div class="service-grid">
+    <div class="service-pill">Ganapathi Homam</div>
+    <div class="service-pill">Chandi Homam</div>
+    <div class="service-pill">Sudarshana Homam</div>
+    <div class="service-pill">Satya Narayana Vratham</div>
+    <div class="service-pill">Varalakshmi Vratham</div>
+    <div class="service-pill">Navagraha Shanti</div>
+    <div class="service-pill">Shraddham Rituals</div>
+    <div class="service-pill">Kalyanotsavam</div>
+    <div class="service-pill">Vinayaka Vratham</div>
+  </div>
+</div>
+
+<!-- ================= INFO ================= -->
+<div class="info-box">
+  <h4>At Your Home or Preferred Venue</h4>
+  <p style="font-size:1.05rem;">
+    The priest travels to homes, halls, or temples. All rituals are performed
+    following authentic Vedic traditions with proper guidance and devotion.
+  </p>
+</div>
 
 {% endblock %}
