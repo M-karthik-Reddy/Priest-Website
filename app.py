@@ -137,6 +137,12 @@ Message:
             smtp_port = int(os.getenv('EMAIL_PORT', 587))
             smtp_user = os.getenv('EMAIL_HOST_USER')
             smtp_password = os.getenv('EMAIL_HOST_PASSWORD')
+            
+            print("SMTP HOST:", smtp_host)
+            print("SMTP PORT:", smtp_port)
+            print("SMTP USER:", smtp_user)
+            print("SMTP PASSWORD EXISTS:", smtp_password is not None)
+            print("FROM:", msg["From"])
 
             with smtplib.SMTP(smtp_host, smtp_port) as server:
                 server.starttls()
