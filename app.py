@@ -38,33 +38,73 @@ CORS(app)
 import requests
 import os
 
+# def send_email_via_brevo_api(subject, body):
+#     brevo_api_key = os.getenv("BREVO_API_KEY")
+#     if not brevo_api_key:
+#         raise ValueError("BREVO_API_KEY is missing in .env")
+
+#     url = "https://api.brevo.com/v3/smtp/email"
+#     headers = {
+#         "accept": "application/json",
+#         "api-key": brevo_api_key.strip(),
+#         "content-type": "application/json"
+#     }
+
+#     payload = {
+#         "sender": {
+#             "name": "Temple Website",
+#             "email": "srikaryasidditempleusa@gmail.com"
+#         },
+#         "to": [
+#             {"email": "acharya88@gmail.com"}
+#         ],
+#         "subject": subject,
+#         "textContent": body
+#     }
+
+#     response = requests.post(url, json=payload, headers=headers, timeout=120)
+#     print("Brevo status:", response.status_code)
+#     print("Brevo response:", response.text)
+#     response.raise_for_status()
+
 def send_email_via_brevo_api(subject, body):
     brevo_api_key = os.getenv("BREVO_API_KEY")
+
     if not brevo_api_key:
-        raise ValueError("BREVO_API_KEY is missing in .env")
+        raise Exception("BREVO_API_KEY not found")
 
     url = "https://api.brevo.com/v3/smtp/email"
+
     headers = {
         "accept": "application/json",
-        "api-key": brevo_api_key.strip(),
+        "api-key": brevo_api_key,
         "content-type": "application/json"
     }
 
     payload = {
         "sender": {
             "name": "Temple Website",
-            "email": "srikaryasidditempleusa@gmail.com"
+            "email": os.getenv("DEFAULT_FROM_EMAIL")
         },
         "to": [
-            {"email": "acharya88@gmail.com"}
+            {
+                "email": "mkarthikreddy27@gmail.com"
+            }
         ],
         "subject": subject,
         "textContent": body
     }
 
-    response = requests.post(url, json=payload, headers=headers, timeout=120)
-    print("Brevo status:", response.status_code)
-    print("Brevo response:", response.text)
+    response = requests.post(
+        url,
+        headers=headers,
+        json=payload,
+        timeout=30
+    )
+
+    print("Status:", response.status_code)
+    print("Response:", response.text)
+
     response.raise_for_status()
 
 
@@ -109,6 +149,7 @@ from email.mime.text import MIMEText
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    print("BREVO_API_KEY:", os.getenv("BREVO_API_KEY"))
     if request.method == 'POST':
         name = request.form.get('name')
         email = request.form.get('email')
@@ -127,31 +168,47 @@ Message:
 {message}
 """
 
-        try:
-            msg = MIMEText(body)
-            msg['Subject'] = f"Website Contact: {subject}"
-            msg['From'] = os.getenv('DEFAULT_FROM_EMAIL', 'srikaryasidditempleusa@gmail.com')
-            msg['To'] = 'mkarthikreddy27@gmail.com'
+        # try:
+        #     msg = MIMEText(body)
+        #     msg['Subject'] = f"Website Contact: {subject}"
+        #     msg['From'] = os.getenv('DEFAULT_FROM_EMAIL', 'srikaryasidditempleusa@gmail.com')
+        #     msg['To'] = 'mkarthikreddy27@gmail.com'
 
-            smtp_host = os.getenv('EMAIL_HOST', 'smtp-relay.brevo.com')
-            smtp_port = int(os.getenv('EMAIL_PORT', 587))
-            smtp_user = os.getenv('EMAIL_HOST_USER')
-            smtp_password = os.getenv('EMAIL_HOST_PASSWORD')
+        #     smtp_host = os.getenv('EMAIL_HOST', 'smtp-relay.brevo.com')
+        #     smtp_port = int(os.getenv('EMAIL_PORT', 587))
+        #     smtp_user = os.getenv('EMAIL_HOST_USER')
+        #     smtp_password = os.getenv('EMAIL_HOST_PASSWORD')
             
-            print("SMTP HOST:", smtp_host)
-            print("SMTP PORT:", smtp_port)
-            print("SMTP USER:", smtp_user)
-            print("SMTP PASSWORD EXISTS:", smtp_password is not None)
-            print("FROM:", msg["From"])
+        #     print("SMTP HOST:", smtp_host)
+        #     print("SMTP PORT:", smtp_port)
+        #     print("SMTP USER:", smtp_user)
+        #     print("SMTP PASSWORD EXISTS:", smtp_password is not None)
+        #     print("FROM:", msg["From"])
 
-            with smtplib.SMTP(smtp_host, smtp_port) as server:
-                server.starttls()
-                server.login(smtp_user, smtp_password)
-                server.sendmail(msg['From'], [msg['To']], msg.as_string())
-            print("Mail sent ! ")
-            flash('Your message has been sent successfully!', 'success')
+        #     with smtplib.SMTP(smtp_host, smtp_port) as server:
+        #         server.starttls()
+        #         server.login(smtp_user, smtp_password)
+        #         server.sendmail(msg['From'], [msg['To']], msg.as_string())
+        #     print("Mail sent ! ")
+        #     flash('Your message has been sent successfully!', 'success')
+        # except Exception as e:
+        #     flash(f'Error sending email: {e}', 'danger')
+        
+        
+        try:
+            print("BREVO_API_KEY:", os.getenv("BREVO_API_KEY"))
+
+            send_email_via_brevo_api(
+                subject=f"Website Contact: {subject}",
+                body=body
+            )
+
+            flash("Your message has been sent successfully!", "success")
+
         except Exception as e:
-            flash(f'Error sending email: {e}', 'danger')
+
+            print(e)
+            flash(f"Error sending email: {e}", "danger")
 
         return redirect(url_for('contact'))
 
