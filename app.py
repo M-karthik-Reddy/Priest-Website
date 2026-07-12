@@ -3,10 +3,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, LoginManager, login_user, logout_user, current_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
-from datetime import datetime
-import requests
+# from flask_mail import Mail, Message
 import os
 from dotenv import load_dotenv
+
+import requests
+import os
 
 load_dotenv()
 
@@ -23,36 +25,50 @@ login_manager.login_view = 'admin_login'
 
 CORS(app)
 
-# ---------------- EMAIL (BREVO) ----------------
+# app.config['MAIL_SERVER'] = os.getenv('EMAIL_HOST')
+# app.config['MAIL_PORT'] = int(os.getenv('EMAIL_PORT', 587))
+# app.config['MAIL_USE_TLS'] = True
+# app.config['MAIL_USE_SSL'] = False
+# app.config['MAIL_USERNAME'] = os.getenv('EMAIL_HOST_USER')
+# app.config['MAIL_PASSWORD'] = os.getenv('EMAIL_HOST_PASSWORD')
+# app.config['MAIL_DEFAULT_SENDER'] = os.getenv('EMAIL_HOST_USER')
+
+# mail = Mail(app)
+
+import requests
+import os
+
 def send_email_via_brevo_api(subject, body):
-    BREVO_API_KEY = os.getenv("BREVO_API_KEY")
+    brevo_api_key = os.getenv("BREVO_API_KEY")
+    if not brevo_api_key:
+        raise ValueError("BREVO_API_KEY is missing in .env")
 
     url = "https://api.brevo.com/v3/smtp/email"
-
     headers = {
         "accept": "application/json",
-        "api-key": BREVO_API_KEY,
+        "api-key": brevo_api_key.strip(),
         "content-type": "application/json"
     }
 
     payload = {
         "sender": {
-            "name": "Priest Services Website",
+            "name": "Temple Website",
             "email": "srikaryasidditempleusa@gmail.com"
         },
         "to": [
-            {"email": "acharya88@gmail.com"},
-            {"email": "mkarthikreddy27@gmail.com"}
+            {"email": "acharya88@gmail.com"}
         ],
         "subject": subject,
         "textContent": body
     }
 
     response = requests.post(url, json=payload, headers=headers, timeout=120)
+    print("Brevo status:", response.status_code)
+    print("Brevo response:", response.text)
     response.raise_for_status()
 
 
-# ---------------- ADMIN ----------------
+
 class AdminUser(db.Model, UserMixin):
     __tablename__ = 'admin_users'
 
@@ -63,46 +79,22 @@ class AdminUser(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-
-# ---------------- OPTIONAL MODELS (KEEP IF NEEDED LATER) ----------------
-class Inquiry(db.Model):
-    __tablename__ = 'inquiries'
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    email = db.Column(db.String(100))
-    phone = db.Column(db.String(20))
-    message = db.Column(db.Text)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-
-
-# ---------------- LOGIN ----------------
 @login_manager.user_loader
 def load_user(user_id):
     return AdminUser.query.get(int(user_id))
 
-
-# ---------------- ROUTES ----------------
-
-# HOME (Priest Landing Page)
 @app.route("/")
 def home():
     return render_template("home-page.html")
 
-
-# ABOUT PRIEST
 @app.route("/index")
 def index():
     return render_template("index.html")
 
-
-# PRIEST SERVICES PAGE
 @app.route("/priest-services")
 def priest_services():
     return render_template("priest-services.html")
 
-
-# POOJA ITEMS PAGE
 @app.route("/pooja-items")
 def pooja_items():
     return render_template("pooja-items.html")
@@ -111,46 +103,53 @@ def pooja_items():
 def gallery():
     return render_template("gallery.html")
 
-@app.route("/contact")
+from flask import request, redirect, url_for, flash, render_template
+import smtplib
+from email.mime.text import MIMEText
+
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
-    return render_template("contact.html")
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        subject = request.form.get('subject')
+        message = request.form.get('message')
 
+        body = f"""New contact form submission
 
-# CONTACT / INQUIRY (optional future form)
-# @app.route("/contact", methods=["GET", "POST"])
-# def contact():
-#     if request.method == "POST":
-#         name = request.form.get("name")
-#         email = request.form.get("email")
-#         phone = request.form.get("phone")
-#         message = request.form.get("message")
+Name: {name}
+Email: {email}
+Phone: {phone}
+Subject: {subject}
 
-#         new_inquiry = Inquiry(
-#             name=name,
-#             email=email,
-#             phone=phone,
-#             message=message
-#         )
+Message:
+{message}
+"""
 
-#         db.session.add(new_inquiry)
-#         db.session.commit()
+        try:
+            msg = MIMEText(body)
+            msg['Subject'] = f"Website Contact: {subject}"
+            msg['From'] = os.getenv('DEFAULT_FROM_EMAIL', 'srikaryasidditempleusa@gmail.com')
+            msg['To'] = 'mkarthikreddy27@gmail.com'
 
-#         send_email_via_brevo_api(
-#             subject="New Priest Service Inquiry",
-#             body=f"""
-# Name: {name}
-# Email: {email}
-# Phone: {phone}
-# Message: {message}
-# """
-#         )
+            smtp_host = os.getenv('EMAIL_HOST', 'smtp-relay.brevo.com')
+            smtp_port = int(os.getenv('EMAIL_PORT', 587))
+            smtp_user = os.getenv('EMAIL_HOST_USER')
+            smtp_password = os.getenv('EMAIL_HOST_PASSWORD')
 
-#         flash("Your request has been submitted successfully!", "success")
-#         return redirect(url_for("home"))
+            with smtplib.SMTP(smtp_host, smtp_port) as server:
+                server.starttls()
+                server.login(smtp_user, smtp_password)
+                server.sendmail(msg['From'], [msg['To']], msg.as_string())
+            print("Mail sent ! ")
+            flash('Your message has been sent successfully!', 'success')
+        except Exception as e:
+            flash(f'Error sending email: {e}', 'danger')
 
-#     return render_template("contact.html")
+        return redirect(url_for('contact'))
 
+    return render_template('contact.html')
 
-# ---------------- MAIN ----------------
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)

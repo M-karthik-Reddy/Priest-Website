@@ -9,3 +9,4 @@ Flask-CORS
 gunicorn
 dotenv
 requests
+Flask-Mail

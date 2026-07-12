@@ -4,99 +4,163 @@
 {% block content %}
 
 <style>
-
-/* ================= PAGE FONT ================= */
-
-.contact-card,
-.contact-card *{
-    font-family:'Segoe UI', Arial, Helvetica, sans-serif;
-}
-
-/* ================= CONTACT CARD ================= */
-
-.contact-card{
-    background:linear-gradient(135deg,#7b150f,#a84a2c);
-    color:white;
-    padding:50px 20px;
-    border-radius:18px;
-    text-align:center;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
-
-/* ================= TEXT ================= */
-
-.contact-card h2{
-    font-size:2rem;
-    font-weight:700;
-    margin-bottom:20px;
-}
-
-.contact-card p{
-    font-size:1.1rem;
-    margin:12px 0;
-    line-height:1.6;
-}
-
-/* ================= EMAIL ================= */
-
-.contact-card a{
-    color:#ffd27d;
-    text-decoration:none;
-    word-break:break-word;
-    transition:0.2s ease;
-}
-
-.contact-card a:hover{
-    color:#ffffff;
-    text-decoration:underline;
-}
-
-/* ================= MOBILE ================= */
-
-@media (max-width:768px){
-
-    body,
-    h1,h2,h3,h4,h5,h6,
-    p,a,span,li,button{
-        font-family:'Segoe UI', Arial, Helvetica, sans-serif !important;
+    .contact-card,
+    .contact-card *{
+        font-family:'Segoe UI', Arial, Helvetica, sans-serif;
     }
 
     .contact-card{
-        padding:30px 15px;
-        border-radius:14px;
+        background:linear-gradient(135deg,#7b150f,#a84a2c);
+        color:white;
+        padding:50px 20px;
+        border-radius:18px;
+        box-shadow:0 10px 25px rgba(0,0,0,0.15);
     }
 
     .contact-card h2{
-        font-size:1.6rem;
+        font-size:2rem;
+        font-weight:700;
+        margin-bottom:20px;
+        text-align:center;
     }
 
     .contact-card p{
-        font-size:1rem;
+        font-size:1.05rem;
+        margin:12px 0;
+        line-height:1.6;
     }
 
-}
+    .contact-card a{
+        color:#ffd27d;
+        text-decoration:none;
+        word-break:break-word;
+        transition:0.2s ease;
+    }
 
+    .contact-card a:hover{
+        color:#ffffff;
+        text-decoration:underline;
+    }
+
+    .form-label{
+        font-weight:600;
+        color:white;
+    }
+
+    .form-control,
+    .form-select{
+        border-radius:12px;
+        border:none;
+        padding:12px 14px;
+    }
+
+    .form-control:focus,
+    .form-select:focus{
+        box-shadow:none;
+        border:2px solid #ffd27d;
+    }
+
+    .submit-btn{
+        background:#ffd27d;
+        color:#7b150f;
+        font-weight:700;
+        border:none;
+        border-radius:12px;
+        padding:12px 22px;
+        transition:0.25s ease;
+    }
+
+    .submit-btn:hover{
+        background:#fff;
+        color:#7b150f;
+    }
+
+    .info-box{
+        background:rgba(255,255,255,0.08);
+        border:1px solid rgba(255,255,255,0.15);
+        border-radius:14px;
+        padding:20px;
+        margin-bottom:25px;
+    }
+
+    .alert-custom{
+        border-radius:12px;
+    }
+
+    @media (max-width:768px){
+        .contact-card{
+            padding:30px 15px;
+            border-radius:14px;
+        }
+
+        .contact-card h2{
+            font-size:1.6rem;
+        }
+
+        .contact-card p{
+            font-size:1rem;
+        }
+    }
 </style>
 
 <div class="container my-5">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-success alert-custom text-center">
+              {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
 
     <div class="contact-card">
-
         <h2>Contact the Priest</h2>
 
-        <p><strong>Venkatacharya Samudrala</strong></p>
+        <div class="info-box">
+            <p><strong>Venkatacharya Samudrala</strong></p>
+            <p>📞 301-523-1926</p>
+            <p>
+                ✉️
+                <a href="mailto:acharya88@gmail.com">acharya88@gmail.com</a>
+            </p>
+        </div>
 
-        <p>📞 301-523-1926</p>
+        <h2 style="font-size:1.5rem; margin-top:10px;">Send a Message</h2>
 
-        <p>
-            ✉️
-            <a href="mailto:acharya88@gmail.com">
-                acharya88@gmail.com
-            </a>
-        </p>
+        <form method="POST" action="{{ url_for('contact') }}">
+            <div class="row g-3 mt-1">
+                <div class="col-md-6">
+                    <label class="form-label" for="name">Your Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                </div>
 
+                <div class="col-md-6">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label" for="phone">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label" for="subject">Subject</label>
+                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label" for="message">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
+                </div>
+
+                <div class="col-12 text-center mt-3">
+                    <button type="submit" class="submit-btn">Submit</button>
+                </div>
+            </div>
+        </form>
     </div>
-
 </div>
 
 {% endblock %}

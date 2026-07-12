@@ -5,229 +5,243 @@
 
 <style>
 
-/* ================= GLOBAL FONT FIX ================= */
+/* ================= GLOBAL FONT ================= */
 body{
   font-family: Arial, Helvetica, sans-serif !important;
   color:#333;
 }
 
 /* ================= HERO ================= */
-.pooja-hero {
-  position: relative;
-  width: 100%;
+.pooja-hero{
+  position:relative;
+  width:100%;
 }
 
-.pooja-hero-bg {
-  background: url('{{ url_for('static',filename='assets/hero-temple.webp') }}') center/cover no-repeat;
-  height: 220px;
+.pooja-hero-bg{
+  background:url('{{ url_for("static", filename="assets/hero-temple.webp") }}') center/cover no-repeat;
+  height:220px;
 }
 
-.pooja-hero-box {
-  max-width: 1050px;
-  margin: 0 auto;
-  padding: 0 15px;
+.pooja-hero-box{
+  max-width:1050px;
+  margin:0 auto;
+  padding:0 15px;
 }
 
-.pooja-title-box {
-  background: #f1c793;
-  border-radius: 22px;
-  min-height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: -160px;
-  box-shadow: 0 12px 28px rgba(235,167,59,0.55);
-  position: relative;
-  overflow: hidden;
+.pooja-title-box{
+  background:#f1c793;
+  border-radius:22px;
+  min-height:220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:-160px;
+  box-shadow:0 12px 28px rgba(235,167,59,0.55);
+  position:relative;
+  overflow:hidden;
 }
 
-.pooja-title-box img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.20;
+.pooja-title-box img{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.20;
 }
 
-.pooja-title {
-  font-size: 2.4rem;
-  color: #941d1b;
-  font-weight: 600;
-  z-index: 2;
-  text-align: center;
+.pooja-title{
+  font-size:2.4rem;
+  color:#941d1b;
+  font-weight:600;
+  z-index:2;
+  text-align:center;
 }
 
 /* ================= GRID ================= */
-.pooja-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin-top: 30px;
+
+.pooja-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:30px;
 }
 
-/* CARD */
-.pooja-card {
-  background: #fffbe7;
-  border-radius: 16px;
-  border: 2px solid #f1c27a;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: 0.25s ease;
+.pooja-card{
+  background:#fffbe7;
+  border-radius:16px;
+  border:2px solid #f1c27a;
+  box-shadow:0 4px 14px rgba(0,0,0,.08);
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:.25s;
 }
 
-.pooja-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+.pooja-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 18px rgba(0,0,0,.12);
 }
 
-.pooja-card h3 {
-  color: #8b2b18;
-  margin-bottom: 8px;
+.pooja-card h3{
+  color:#8b2b18;
+  margin-bottom:8px;
 }
 
-.pooja-card p {
-  font-size: 0.95rem;
-  color: #5d4630;
+.pooja-card p{
+  font-size:.95rem;
+  color:#5d4630;
 }
 
-/* BUTTON */
-.pooja-btn {
-  margin-top: 10px;
-  display: inline-block;
-  background: #ffd566;
-  color: #7a2f04;
-  font-weight: 600;
-  padding: 7px 16px;
-  border-radius: 999px;
-  text-decoration: none;
+.pooja-btn{
+  margin-top:10px;
+  display:inline-block;
+  background:#ffd566;
+  color:#7a2f04;
+  font-weight:600;
+  padding:7px 16px;
+  border-radius:999px;
+  text-decoration:none;
 }
 
-.pooja-btn:hover {
-  background: #ffe18e;
+.pooja-btn:hover{
+  background:#ffe18e;
 }
 
 /* ================= RESPONSIVE ================= */
 
-@media (max-width: 992px) {
-  .pooja-grid {
-    grid-template-columns: repeat(2, 1fr);
+@media(max-width:992px){
+
+  .pooja-grid{
+    grid-template-columns:repeat(2,1fr);
   }
+
 }
 
-@media (max-width: 600px) {
+@media(max-width:600px){
 
-  /* FIX FONT ISSUES */
-  body,
-  h1, h2, h3, h4, h5, p, a, span {
-    font-family: Arial, Helvetica, sans-serif !important;
+  .pooja-title{
+    font-size:1.6rem;
   }
 
-  .pooja-title {
-    font-size: 1.6rem;
+  .pooja-grid{
+    grid-template-columns:1fr;
   }
 
-  .pooja-grid {
-    grid-template-columns: 1fr;
+  .pooja-card{
+    padding:14px;
   }
 
-  .pooja-card {
-    padding: 14px;
-  }
 }
 
 </style>
 
-<!-- ================= HERO ================= -->
-<div class="pooja-hero">
-  <div class="pooja-hero-bg"></div>
+<!-- HERO -->
 
-  <div class="pooja-hero-box">
-    <div class="pooja-title-box">
-      <img src="{{ url_for('static', filename='assets/pooja-items.webp') }}">
-      <div class="pooja-title">Pooja Items Checklist</div>
+<div class="pooja-hero">
+
+    <div class="pooja-hero-bg"></div>
+
+    <div class="pooja-hero-box">
+
+        <div class="pooja-title-box">
+
+            <img src="{{ url_for('static', filename='assets/pooja-items.webp') }}">
+
+            <div class="pooja-title">
+                Pooja Items Checklist
+            </div>
+
+        </div>
+
     </div>
-  </div>
+
 </div>
 
-<!-- ================= CONTENT ================= -->
+<!-- CONTENT -->
+
 <div style="max-width:1050px;margin:40px auto;padding:0 15px;">
 
-  <p style="text-align:center;font-size:1.05rem;">
-    Please use the following lists to prepare required items for rituals.
-  </p>
+    <p style="text-align:center;font-size:1.05rem;">
+        Please use the following lists to prepare required items for rituals.
+    </p>
 
-  <div class="pooja-grid">
+    <div class="pooja-grid">
 
-    <div class="pooja-card">
-      <h3>Aksharabhasyam</h3>
-      <p>Checklist for Vidyarambham ceremony.</p>
-      <a class="pooja-btn" href="#">Get List</a>
+        <div class="pooja-card">
+            <h3>Aksharabhasyam</h3>
+            <p>Checklist for Vidyarambham ceremony.</p>
+            <a class="pooja-btn" href="https://drive.google.com/file/d/1A7GcKfkTI6zhJjgeNACEMXZwBDC8hSZB/view?usp=drive_link" target="_blank">Get List</a>
+        </div>
+
+        <div class="pooja-card">
+            <h3>Annaprasana</h3>
+            <p>Baby's first feeding ceremony items.</p>
+            <a class="pooja-btn" href="https://drive.google.com/file/d/1WQGtrDaX1NR84xQWO-rQbjPsr4H5nQOO/view?usp=drive_link" target="_blank">Get List</a>
+        </div>
+
+        <div class="pooja-card">
+            <h3>Ayusha Homam</h3>
+            <p>Birthday protection ritual checklist.</p>
+            <a class="pooja-btn" href="https://drive.google.com/file/d/1E0o3z2ztPBhk61CZepZI9flpT4pSwCeF/view?usp=drive_link" target="_blank">Get List</a>
+        </div>
+
+        <div class="pooja-card">
+            <h3>Ganapathi Homam</h3>
+            <p>Ganapathi Homam required items.</p>
+            <a class="pooja-btn" href="https://drive.google.com/file/d/1FCoR2Iexb1q0h3KfOD0A-Qj1fXcYrmgA/view?usp=drive_link" target="_blank">Get List</a>
+        </div>
+
+        <div class="pooja-card">
+            <h3>Gruhapravesham</h3>
+            <p>Housewarming ceremony items.</p>
+            <a class="pooja-btn" href="https://drive.google.com/file/d/1XwrFf0VEXHO9jRqvqV1tyh0UoiheR2y_/view?usp=drive_link" target="_blank">Get List</a>
+        </div>
+
+        <div class="pooja-card">
+            <h3>Hiranyam</h3>
+            <p>Checklist for Hiranyam ceremony.</p>
+            <a class="pooja-btn" href="https://drive.google.com/file/d/1_W4Wr60y9qighFUE2oqUigRNcuTmzmEH/view?usp=drive_link" target="_blank">Get List</a>
+        </div>
+
+        <div class="pooja-card">
+            <h3>Keshakandam</h3>
+            <p>Hair offering ceremony items.</p>
+            <a class="pooja-btn" href="https://drive.google.com/file/d/1nAuV8N_uclWaj-q366Cj0hzrm9j4Wc5h/view?usp=drive_link" target="_blank">Get List</a>
+        </div>
+
+        <div class="pooja-card">
+            <h3>Namakaranam</h3>
+            <p>Baby naming ceremony checklist.</p>
+            <a class="pooja-btn" href="https://drive.google.com/file/d/1-CkeXbBQXpOL8KGNuyhn4gEMWV2g0w5-/view?usp=drive_link" target="_blank">Get List</a>
+        </div>
+
+        <div class="pooja-card">
+            <h3>Punyavachanam</h3>
+            <p>Purification ritual items.</p>
+            <a class="pooja-btn" href="https://drive.google.com/file/d/1I_cKqk8EZFsNPDYkH-N1bbaYczj1mCrf/view?usp=drive_link" target="_blank">Get List</a>
+        </div>
+
+        <div class="pooja-card">
+            <h3>Seemantham</h3>
+            <p>Baby shower ceremony items.</p>
+            <a class="pooja-btn" href="https://drive.google.com/file/d/1WkO_qXuotqyzgIfMGY2-NCx8mMTwf84f/view?usp=drive_link" target="_blank">Get List</a>
+        </div>
+
+        <div class="pooja-card">
+            <h3>Sudarshana Homam</h3>
+            <p>Protection ritual checklist.</p>
+            <a class="pooja-btn" href="https://drive.google.com/file/d/1rw2E9rpmEiFP4TaSV7RjfqxACpn6PLpG/view?usp=drive_link" target="_blank">Get List</a>
+        </div>
+
+        <div class="pooja-card">
+            <h3>Wedding</h3>
+            <p>Complete Vedic wedding checklist.</p>
+            <a class="pooja-btn" href="https://drive.google.com/file/d/1noqpNfHbmd3PBPOjwDdsRh9LIRnahEBD/view?usp=drive_link" target="_blank">Get List</a>
+        </div>
+
     </div>
 
-    <div class="pooja-card">
-      <h3>Annaprasana</h3>
-      <p>Baby’s first feeding ceremony items.</p>
-      <a class="pooja-btn" href="#">Get List</a>
-    </div>
-
-    <div class="pooja-card">
-      <h3>Ayusha Homam</h3>
-      <p>Birthday protection ritual checklist.</p>
-      <a class="pooja-btn" href="#">Get List</a>
-    </div>
-
-    <div class="pooja-card">
-      <h3>Ganapathi Homam</h3>
-      <p>Ganapathi Homam required items.</p>
-      <a class="pooja-btn" href="#">Get List</a>
-    </div>
-
-    <div class="pooja-card">
-      <h3>Gruhapravesham</h3>
-      <p>Housewarming ceremony items.</p>
-      <a class="pooja-btn" href="#">Get List</a>
-    </div>
-
-    <div class="pooja-card">
-      <h3>Keshakandam</h3>
-      <p>Hair offering ceremony items.</p>
-      <a class="pooja-btn" href="#">Get List</a>
-    </div>
-
-    <div class="pooja-card">
-      <h3>Namakaranam</h3>
-      <p>Baby naming ceremony checklist.</p>
-      <a class="pooja-btn" href="#">Get List</a>
-    </div>
-
-    <div class="pooja-card">
-      <h3>Punyavachanam</h3>
-      <p>Purification ritual items.</p>
-      <a class="pooja-btn" href="#">Get List</a>
-    </div>
-
-    <div class="pooja-card">
-      <h3>Seemantham</h3>
-      <p>Baby shower ceremony items.</p>
-      <a class="pooja-btn" href="#">Get List</a>
-    </div>
-
-    <div class="pooja-card">
-      <h3>Sudarshana Homam</h3>
-      <p>Protection ritual checklist.</p>
-      <a class="pooja-btn" href="#">Get List</a>
-    </div>
-
-    <div class="pooja-card">
-      <h3>Wedding</h3>
-      <p>Complete Vedic wedding checklist.</p>
-      <a class="pooja-btn" href="#">Get List</a>
-    </div>
-
-  </div>
 </div>
 
 {% endblock %}
