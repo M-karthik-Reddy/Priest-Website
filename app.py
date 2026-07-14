@@ -141,7 +141,18 @@ def pooja_items():
 
 @app.route("/gallery")
 def gallery():
-    return render_template("gallery.html")
+    video_links = [
+    "https://drive.google.com/file/d/18roV3WM6ylkIIDkU_7KUPhVI3ka5cp18/view?usp=drive_link",
+    "https://drive.google.com/file/d/1-UlXszcExZVBzUf3BMlc7QHBoaR57go-/view?usp=drive_link",
+    "https://drive.google.com/file/d/1v-RKs9BWQeU-DEffC7VYnDAKCkoZ_EW7/view?usp=drive_link",
+    "https://drive.google.com/file/d/1_XZfS64zc3p73yqZ03PNOY_ivZue4uEH/view?usp=drive_link",
+    "https://drive.google.com/file/d/1pHNjFH7zlCVR3QrohDyj41dk4AHGDeqR/view?usp=drive_link",
+    "https://drive.google.com/file/d/16rFy6sJo3ceRNsmkyK9Ofd6fcEx2Ud2c/view?usp=drive_link",
+]
+    return render_template("gallery.html",video_links=video_links)
+
+
+
 
 from flask import request, redirect, url_for, flash, render_template
 import smtplib
