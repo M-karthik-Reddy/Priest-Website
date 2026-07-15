@@ -4,13 +4,78 @@
 
 {% block content %}
 
-<div class="container my-4">
+<style>
+
+.pdf-container{
+    max-width:1200px;
+    margin:40px auto;
+    padding:0 15px;
+}
+
+.pdf-header{
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:15px;
+}
+
+.close-btn{
+    width:46px;
+    height:46px;
+    border:none;
+    border-radius:50%;
+    background:#c1272d;
+    color:white;
+    font-size:1.5rem;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.25s;
+    box-shadow:0 5px 12px rgba(0,0,0,.2);
+}
+
+.close-btn:hover{
+    background:#941d1b;
+    transform:scale(1.08);
+}
+
+.pdf-frame{
+    width:100%;
+    height:900px;
+    border:none;
+    border-radius:14px;
+    box-shadow:0 8px 22px rgba(0,0,0,.15);
+}
+
+@media(max-width:768px){
+
+    .pdf-frame{
+        height:75vh;
+    }
+
+    .close-btn{
+        width:42px;
+        height:42px;
+        font-size:1.3rem;
+    }
+
+}
+
+</style>
+
+<div class="pdf-container">
+
+    <div class="pdf-header">
+
+        <button
+            class="close-btn"
+            onclick="window.location.href='{{ url_for('pooja_items') }}'">
+            &times;
+        </button>
+
+    </div>
 
     <iframe
-        src="{{ pdf }}"
-        width="100%"
-        height="900"
-        style="border:none;border-radius:12px;">
+        class="pdf-frame"
+        src="{{ pdf }}">
     </iframe>
 
 </div>
