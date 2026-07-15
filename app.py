@@ -88,7 +88,7 @@ def send_email_via_brevo_api(subject, body):
         },
         "to": [
             {
-                "email": "mkarthikreddy27@gmail.com"
+                "email": "acharya88@gmail.com"
             }
         ],
         "subject": subject,
