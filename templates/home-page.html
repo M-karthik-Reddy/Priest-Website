@@ -221,6 +221,33 @@
     }
 
 }
+/* ================= ABOUT PRIEST IMAGE ================= */
+
+.priest-photo{
+    width:340px;              /* increased from 260px */
+    max-width:90%;
+    border-radius:20px;
+    border:6px solid #fff;
+    box-shadow:0 10px 30px rgba(0,0,0,.18);
+    margin:25px auto 30px;
+    display:block;
+    transition:.3s ease;
+}
+
+.priest-photo:hover{
+    transform:scale(1.03);
+}
+
+@media(max-width:768px){
+
+    .priest-photo{
+        width:100%;           /* take full available width */
+        max-width:350px;      /* prevents becoming too huge */
+        border-radius:16px;
+        margin:20px auto 25px;
+    }
+
+}
 </style>
 
 <div class="container my-5">
@@ -257,6 +284,13 @@
   <h2 style="color:#7b150f; font-family:'Merienda', cursive;">
     About the Priest
   </h2>
+
+  <!-- Priest Image -->
+  <img
+      src="{{ url_for('static', filename='assets/priest6.jpeg') }}"
+      alt="Sri Venkatacharya Samudrala"
+      class="priest-photo"
+  >
 
   <p style="max-width:850px; margin:auto; color:#5a3a1f; font-size:1.1rem; line-height:1.8;">
     Sriman Venkatacharya Swamy is a respected Vedic priest dedicated to preserving

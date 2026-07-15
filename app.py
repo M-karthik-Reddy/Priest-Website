@@ -135,9 +135,39 @@ def index():
 def priest_services():
     return render_template("priest-services.html")
 
+# @app.route("/pooja-items")
+# def pooja_items():
+#     return render_template("pooja-items.html")
+
 @app.route("/pooja-items")
 def pooja_items():
-    return render_template("pooja-items.html")
+
+    pooja_links = {
+        "Aksharabhasyam": "https://drive.google.com/file/d/1z2YRKLHZ25FlZKZIVpHB4HFY2CkrI5Hs/preview",
+        "Annaprasana": "https://drive.google.com/file/d/1jKCNlVVUOaaDX-Vl43tKpS19ZH12oN3W/preview",
+        "Ayusha Homam": "https://drive.google.com/file/d/19s4eVpTC7pMqhDgD4YtWipTq2TIyY0PA/preview",
+        "Ganapathi Homam": "https://drive.google.com/file/d/1DudVmtQt0I3Zfr3mdmCAt6kdAOgyluvR/preview",
+        "Gruhapravesham": "https://drive.google.com/file/d/1ET4jusaWfvqFrSxFP1nv3n8WAd-K7g5y/preview",
+        "Hiranyam": "https://drive.google.com/file/d/1-2DA7TQcR9sNxZnowHMENtm6c5yJhqXd/preview",
+        "Keshakandam": "https://drive.google.com/file/d/123Bdj_Kt2dY0Vjd-xF2bO3eO0661KXWm/preview",
+        "Namakaranam": "https://drive.google.com/file/d/1EM7ui0Vdcx5cpGBsh1n5j-wfmc0MornR/preview",
+        "Punyavachanam": "https://drive.google.com/file/d/1_0gDE7yJlS_e--U3ZXV_laiKjsPdvCYK/preview",
+        "Seemantham": "https://drive.google.com/file/d/1FW2FGlud9RtuyqwTt3pEoUK6XbwWs4w5/preview",
+        "Sudarshana Homam": "https://drive.google.com/file/d/108q8xsTWEHrl4PE1_HeDYn5MIMf1TwR2/preview",
+        "Wedding": "https://drive.google.com/file/d/1xjxOdb6HWNbsahofxuQUk_fWPtpxGjPW/preview",
+        "Nakshatra Shanti Homam": "https://drive.google.com/file/d/1uiKG0fUbKSYPJKPWXAU4G7TSMgtLccd5/preview"
+    }
+
+    return render_template(
+        "pooja-items.html",
+        pooja_links=pooja_links
+    )
+
+
+@app.route("/view-pooja")
+def view_pooja():
+    pdf = request.args.get("pdf")
+    return render_template("view-pooja.html", pdf=pdf)
 
 @app.route("/gallery")
 def gallery():
