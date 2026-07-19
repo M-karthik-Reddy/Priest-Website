@@ -3,9 +3,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, LoginManager, login_user, logout_user, current_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
+from flask import request, redirect, url_for, flash, render_template
+import smtplib
+from email.mime.text import MIMEText
 # from flask_mail import Mail, Message
 import os
 from dotenv import load_dotenv
+from flask import send_from_directory
 
 import requests
 import os
@@ -181,12 +185,13 @@ def gallery():
 ]
     return render_template("gallery.html",video_links=video_links)
 
+@app.route("/robots.txt")
+def robots():
+    return send_from_directory("static", "robots.txt")
 
-
-
-from flask import request, redirect, url_for, flash, render_template
-import smtplib
-from email.mime.text import MIMEText
+@app.route("/sitemap.xml")
+def sitemap():
+    return send_from_directory("static", "sitemap.xml")
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
